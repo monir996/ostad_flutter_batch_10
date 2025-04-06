@@ -41,5 +41,4 @@ void main() {
 
   // Print the result
   print(JsonEncoder.withIndent('  ').convert(sortedAverages));
-
 }
