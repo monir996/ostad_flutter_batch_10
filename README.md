@@ -1,16 +1,27 @@
-# assignment_02_ostad10
+# Project
 
 A Flutter project about Responsive design. Ostad Batch-10 - Assignment-02
 
-## Getting Started
+# Assignment Question and Requirements:
 
-This project is a starting point for a Flutter application.
+You have to design an UI with Responsive design.  
+When your screen size is in mobile size then show 2 cards  in a row,  
+when tablet 3 cards in a row  
+and when desktop / web size then show 4 cards in a row.  
+Use different countries' flags instead of the provided pictures. 
 
-A few resources to get you started if this is your first Flutter project:
+**Mobile Size (Pixel size < 768)**  
+**Tablet Size ( 1024 >= Pixel size > 768)**  
+**Desktop/web size (Pixel size > 1024 )**
+- - -
+## Design Ouput:
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+### Mobile Device
+<img src="https://github.com/user-attachments/assets/83250e40-72c0-4761-9483-ef5bfbb180db" alt="Mobile-02" width="300"/>
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+### Tablet Device
+<img src="https://github.com/user-attachments/assets/c0c8d513-eaeb-4774-acf4-3b09e63cf4fc" alt="Tablet-02" width="300"/>
+
+### Desktop/Web
+<img src="https://github.com/user-attachments/assets/ade0f5f2-30d0-4c3f-8753-538442e2a800" alt="Desktop-Web-02" width="300"/>
+
