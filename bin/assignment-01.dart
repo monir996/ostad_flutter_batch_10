@@ -2,7 +2,7 @@
 * ========== Ostad Flutter Batch-10 Assignment ==========
 * Assignment-01
 * Name: Mohammad Monir Hossain
-* Email: ahmedmonir303@gmail.com
+* Email: monir.nub.cse996@gmail.com
 * Phone: 01521439480
 * */
 
