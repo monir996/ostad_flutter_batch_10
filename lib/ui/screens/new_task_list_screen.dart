@@ -1,13 +1,14 @@
-import 'package:assignment_04/data/models/task_model.dart';
 import 'package:assignment_04/data/models/task_status_count.dart';
 import 'package:assignment_04/data/service/network_caller.dart';
 import 'package:assignment_04/data/utils.dart';
+import 'package:assignment_04/ui/controllers/new_task_list_controller.dart';
 import 'package:assignment_04/ui/screens/add_new_task_screen.dart';
 import 'package:assignment_04/ui/widgets/centered_circular_progress_indicator.dart';
 import 'package:assignment_04/ui/widgets/snackbar_message.dart';
 import 'package:assignment_04/ui/widgets/task_card.dart';
 import 'package:assignment_04/ui/widgets/task_count_summary_card.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 class NewTaskListScreen extends StatefulWidget {
   const NewTaskListScreen({super.key});
@@ -18,16 +19,14 @@ class NewTaskListScreen extends StatefulWidget {
 
 class _NewTaskListScreenState extends State<NewTaskListScreen> {
 
-  bool _getNewTasksInProgress = false;
   bool _getTaskStatusCountInProgress = false;
-  List<TaskModel> _newTaskList = [];
   List<TaskStatusCountModel> _taskStatusCountList = [];
 
   @override
   void initState() {
     super.initState();
     WidgetsBinding.instance.addPostFrameCallback((_){
-      _getNewTaskList();
+      Get.find<NewTaskListController>().getNewTaskList();
       _getTaskStatusCountList();
     });
   }
@@ -60,22 +59,26 @@ class _NewTaskListScreenState extends State<NewTaskListScreen> {
             ),
 
             Expanded(
-              child: Visibility(
-                visible: _getNewTasksInProgress == false,
-                replacement: CenteredCircularProgressIndicator(),
-                child: ListView.builder(
-                  itemCount: _newTaskList.length,
-                  itemBuilder: (context, index){
-                    return TaskCard(
-                      taskType: TaskType.tNew,
-                      taskModel: _newTaskList[index],
-                      onStatusUpdate: (){
-                        _getNewTaskList();
-                        _getTaskStatusCountList();
+              child: GetBuilder<NewTaskListController>(
+                builder: (controller) {
+                  return Visibility(
+                    visible: controller.inProgress == false,
+                    replacement: CenteredCircularProgressIndicator(),
+                    child: ListView.builder(
+                      itemCount: controller.newTaskList.length,
+                      itemBuilder: (context, index){
+                        return TaskCard(
+                          taskType: TaskType.tNew,
+                          taskModel: controller.newTaskList[index],
+                          onStatusUpdate: (){
+                            Get.find<NewTaskListController>().getNewTaskList();
+                            _getTaskStatusCountList();
+                          },
+                        );
                       },
-                    );
-                  },
-                ),
+                    ),
+                  );
+                }
               ),
             )
 
@@ -115,35 +118,13 @@ class _NewTaskListScreenState extends State<NewTaskListScreen> {
     }
   }
 
-  Future<void> _getNewTaskList() async{
-    _getNewTasksInProgress = true;
-    setState(() {});
 
-    NetworkResponse response = await NetworkCaller.getRequest(url: Urls.getNewTasksUrl);
-
-
-
-    if(response.isSuccess){
-
-      List<TaskModel> list = [];
-
-      for(Map<String, dynamic> jsonData in response.body!['data']) {
-        list.add(TaskModel.fromJson(jsonData));
-      }
-      _newTaskList = list;
-    } else {
-      if(mounted){
-        showSnackBarMessage(context, response.errorMessage!);
-      }
-    }
-    _getNewTasksInProgress = false;
-    if(mounted){
-      setState(() {});
-    }
-  }
 
   void _onTapAddNewTaskButton(){
-    Navigator.pushNamed(context, AddNewTaskScreen.name);
+    //Navigator.pushNamed(context, AddNewTaskScreen.name);
+
+    //Get.to(()=> const AddNewTaskScreen());
+    Get.toNamed(AddNewTaskScreen.name);
   }
 }
 

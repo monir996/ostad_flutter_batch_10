@@ -1,3 +1,4 @@
+import 'package:assignment_04/controller_binder.dart';
 import 'package:assignment_04/ui/screens/add_new_task_screen.dart';
 import 'package:assignment_04/ui/screens/change_password_screen.dart';
 import 'package:assignment_04/ui/screens/forgot_password_email_screen.dart';
@@ -8,6 +9,7 @@ import 'package:assignment_04/ui/screens/sign_up_screen.dart';
 import 'package:assignment_04/ui/screens/splash_screen.dart';
 import 'package:assignment_04/ui/screens/update_profile_screen.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 class TaskManagerApp extends StatelessWidget {
   const TaskManagerApp({super.key});
@@ -16,7 +18,7 @@ class TaskManagerApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return GetMaterialApp(
       debugShowCheckedModeBanner: false,
       navigatorKey: navigator,
       theme: ThemeData(
@@ -67,6 +69,7 @@ class TaskManagerApp extends StatelessWidget {
         AddNewTaskScreen.name : (context) => AddNewTaskScreen(),
         UpdateProfileScreen.name : (context) => UpdateProfileScreen(),
       },
+      initialBinding: ControllerBinder(),
     );
   }
 }

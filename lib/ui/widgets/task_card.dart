@@ -60,10 +60,7 @@ class _TaskCardState extends State<TaskCard> {
                   padding: EdgeInsets.symmetric(horizontal: 16),
                 ),
                 Spacer(),
-                IconButton(
-                  onPressed: () {},
-                  icon: Icon(Icons.delete_forever_outlined, color: Colors.red),
-                ),
+
                 Visibility(
                   visible: _updateTaskStatusInProgress == false,
                   replacement: CenteredCircularProgressIndicator(),
@@ -71,6 +68,10 @@ class _TaskCardState extends State<TaskCard> {
                     onPressed: _showEditTaskStatusDialog,
                     icon: Icon(Icons.edit),
                   ),
+                ),
+                IconButton(
+                  onPressed: () {},
+                  icon: Icon(Icons.delete_forever_outlined, color: Colors.red),
                 ),
               ],
             ),

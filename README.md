@@ -1,6 +1,6 @@
-# assignment_04
+# assignment_05
 
- Task Manager App. Ostad Batch-10 - Assignment-04
+ Task Manager App with Getx. Ostad Batch-10 - Assignment-05
 
 ## Version
 
