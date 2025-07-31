@@ -1,3 +1,5 @@
+import 'package:assignment_04/ui/controllers/auth_controller.dart';
+import 'package:assignment_04/ui/screens/main_navbar_holder_screen.dart';
 import 'package:assignment_04/ui/screens/sign_in_screen.dart';
 import 'package:assignment_04/ui/utils/asset_paths.dart';
 import 'package:assignment_04/ui/widgets/screen_background.dart';
@@ -23,7 +25,16 @@ class _SplashScreenState extends State<SplashScreen> {
 
   Future<void> _moveToNextScreen() async {
     await Future.delayed(Duration(seconds: 2));
-    Navigator.pushReplacementNamed(context, SignInScreen.name);
+
+    bool isLoggedIn = await AuthController.isUserLoggedIn();
+
+    if(isLoggedIn) {
+      Navigator.pushReplacementNamed(context, MainNavbarHolderScreen.name);
+    } else {
+      Navigator.pushReplacementNamed(context, SignInScreen.name);
+    }
+
+
   }
 
   @override

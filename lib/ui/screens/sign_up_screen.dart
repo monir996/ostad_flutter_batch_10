@@ -1,5 +1,6 @@
 import 'package:assignment_04/data/service/network_caller.dart';
 import 'package:assignment_04/data/utils.dart';
+import 'package:assignment_04/ui/widgets/centered_circular_progress_indicator.dart';
 import 'package:assignment_04/ui/widgets/screen_background.dart';
 import 'package:assignment_04/ui/widgets/snackbar_message.dart';
 import 'package:email_validator/email_validator.dart';
@@ -124,7 +125,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
 
                   Visibility(
                     visible: _signUpInProgress == false,
-                    replacement: Center(child: CircularProgressIndicator()),
+                    replacement: CenteredCircularProgressIndicator(),
                     child: ElevatedButton(
                       onPressed: _onTapSignUpButton,
                       child: Icon(Icons.arrow_circle_right_outlined),
